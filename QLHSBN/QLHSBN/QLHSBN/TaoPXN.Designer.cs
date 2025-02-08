@@ -61,6 +61,7 @@ namespace QLHSBN
             this.cbb_hs.Name = "cbb_hs";
             this.cbb_hs.Size = new System.Drawing.Size(177, 21);
             this.cbb_hs.TabIndex = 0;
+            this.cbb_hs.SelectedIndexChanged += new System.EventHandler(this.cbb_hs_SelectedIndexChanged);
             this.cbb_hs.SelectionChangeCommitted += new System.EventHandler(this.cbb_hs_SelectionChangeCommitted);
             // 
             // label1

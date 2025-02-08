@@ -226,5 +226,10 @@ namespace QLHSBN
                 if (selectedRow.Cells[3].Value?.ToString() == "0") ckbThuocBaoHiem.Checked = false;
             }
         }
+
+        private void dataGridViewDanhSachThuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

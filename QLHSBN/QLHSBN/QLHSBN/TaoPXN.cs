@@ -266,5 +266,10 @@ namespace QLHSBN
         {
 
         }
+
+        private void cbb_hs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

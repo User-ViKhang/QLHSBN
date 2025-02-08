@@ -33,6 +33,7 @@ namespace QLHSBN
             this.txt_stt = new System.Windows.Forms.TextBox();
             this.dtp_nhapvien = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,9 +50,12 @@ namespace QLHSBN
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_filter = new System.Windows.Forms.Button();
             this.dtp_2 = new System.Windows.Forms.DateTimePicker();
+            this.btnXuatVien = new System.Windows.Forms.Button();
             this.dtp_1 = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_benhnhan = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -62,10 +66,6 @@ namespace QLHSBN
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbb_dichvu = new System.Windows.Forms.ComboBox();
-            this.btn_refresh = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txt_benhnhan = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -125,6 +125,17 @@ namespace QLHSBN
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin nhập viện";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btn_refresh
+            // 
+            this.btn_refresh.Location = new System.Drawing.Point(430, 113);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(121, 23);
+            this.btn_refresh.TabIndex = 4;
+            this.btn_refresh.Text = "Làm mới";
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
             // button4
             // 
@@ -226,6 +237,7 @@ namespace QLHSBN
             this.cbb_hsbenh.Name = "cbb_hsbenh";
             this.cbb_hsbenh.Size = new System.Drawing.Size(146, 21);
             this.cbb_hsbenh.TabIndex = 2;
+            this.cbb_hsbenh.SelectedIndexChanged += new System.EventHandler(this.cbb_hsbenh_SelectedIndexChanged);
             this.cbb_hsbenh.SelectionChangeCommitted += new System.EventHandler(this.cbb_hsbenh_SelectionChangeCommitted);
             // 
             // dataGridView1
@@ -235,6 +247,7 @@ namespace QLHSBN
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(694, 363);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // groupBox2
@@ -251,7 +264,7 @@ namespace QLHSBN
             // 
             this.groupBox3.Controls.Add(this.btn_filter);
             this.groupBox3.Controls.Add(this.dtp_2);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnXuatVien);
             this.groupBox3.Controls.Add(this.dtp_1);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Location = new System.Drawing.Point(12, 169);
@@ -278,6 +291,16 @@ namespace QLHSBN
             this.dtp_2.Name = "dtp_2";
             this.dtp_2.Size = new System.Drawing.Size(121, 20);
             this.dtp_2.TabIndex = 3;
+            // 
+            // btnXuatVien
+            // 
+            this.btnXuatVien.Location = new System.Drawing.Point(579, 22);
+            this.btnXuatVien.Name = "btnXuatVien";
+            this.btnXuatVien.Size = new System.Drawing.Size(121, 23);
+            this.btnXuatVien.TabIndex = 4;
+            this.btnXuatVien.Text = "Xuất viện";
+            this.btnXuatVien.UseVisualStyleBackColor = true;
+            this.btnXuatVien.Click += new System.EventHandler(this.btnXuatVien_Click);
             // 
             // dtp_1
             // 
@@ -314,6 +337,27 @@ namespace QLHSBN
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Chi tiết hồ sơ nhập viện";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(581, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(10, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = ".";
+            // 
+            // txt_benhnhan
+            // 
+            this.txt_benhnhan.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txt_benhnhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.txt_benhnhan.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.txt_benhnhan.Location = new System.Drawing.Point(9, 54);
+            this.txt_benhnhan.Name = "txt_benhnhan";
+            this.txt_benhnhan.ReadOnly = true;
+            this.txt_benhnhan.Size = new System.Drawing.Size(268, 23);
+            this.txt_benhnhan.TabIndex = 13;
+            this.txt_benhnhan.TextChanged += new System.EventHandler(this.txt_benhnhan_TextChanged);
             // 
             // groupBox6
             // 
@@ -410,51 +454,11 @@ namespace QLHSBN
             this.cbb_dichvu.TabIndex = 2;
             this.cbb_dichvu.SelectionChangeCommitted += new System.EventHandler(this.cbb_dichvu_SelectionChangeCommitted);
             // 
-            // btn_refresh
-            // 
-            this.btn_refresh.Location = new System.Drawing.Point(430, 113);
-            this.btn_refresh.Name = "btn_refresh";
-            this.btn_refresh.Size = new System.Drawing.Size(121, 23);
-            this.btn_refresh.TabIndex = 4;
-            this.btn_refresh.Text = "Làm mới";
-            this.btn_refresh.UseVisualStyleBackColor = true;
-            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(579, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Xuất viện";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // txt_benhnhan
-            // 
-            this.txt_benhnhan.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txt_benhnhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.txt_benhnhan.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.txt_benhnhan.Location = new System.Drawing.Point(9, 54);
-            this.txt_benhnhan.Name = "txt_benhnhan";
-            this.txt_benhnhan.ReadOnly = true;
-            this.txt_benhnhan.Size = new System.Drawing.Size(268, 23);
-            this.txt_benhnhan.TabIndex = 13;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(581, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(10, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = ".";
-            // 
             // Phieunhapvien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1453, 637);
+            this.ClientSize = new System.Drawing.Size(1370, 637);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -514,7 +518,7 @@ namespace QLHSBN
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btn_refresh;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXuatVien;
         private System.Windows.Forms.TextBox txt_benhnhan;
         private System.Windows.Forms.Label label8;
     }

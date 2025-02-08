@@ -424,5 +424,105 @@ namespace QLHSBN
             }
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbb_hsbenh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_benhnhan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXuatVien_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txt_stt.Text))
+            {
+                int STT;
+                if (!int.TryParse(txt_stt.Text, out STT))
+                {
+                    MessageBox.Show("Mã nhập viện không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (SqlConnection connection = new SqlConnection(cm.connectionString))
+                {
+                    connection.Open();
+                    using (SqlTransaction transaction = connection.BeginTransaction()) // Bắt đầu transaction
+                    {
+                        try
+                        {
+                            int code = 0; // hs_id mặc định
+                            string query = "SELECT hs_id FROM phieunhapvien WHERE nhapvien_id = @STT";
+
+                            using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@STT", STT);
+                                object result = command.ExecuteScalar();
+                                if (result != null)
+                                {
+                                    code = Convert.ToInt32(result);
+                                }
+                            }
+
+                            if (code > 0)
+                            {
+                                string updateHsbn = "UPDATE hsbn SET trangthai = 1 WHERE hs_id = @hs_id";
+                                using (SqlCommand cmd = new SqlCommand(updateHsbn, connection, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@hs_id", code);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                string updateLichSu = "UPDATE lichsunamvien SET ngayra = @ngayra WHERE hs_id = @hs_id";
+                                using (SqlCommand cmd = new SqlCommand(updateLichSu, connection, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@ngayra", DateTime.Now.Date);
+                                    cmd.Parameters.AddWithValue("@hs_id", code);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                string updatePhieu = "UPDATE phieunhapvien SET ngayxuatvien = @ngayxuatvien WHERE nhapvien_id = @nhapvien_id";
+                                using (SqlCommand cmd = new SqlCommand(updatePhieu, connection, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@ngayxuatvien", DateTime.Now.Date);
+                                    cmd.Parameters.AddWithValue("@nhapvien_id", STT);
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không tìm thấy bệnh nhân!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+
+                            transaction.Commit(); // Commit nếu không có lỗi
+                            MessageBox.Show("Xuất viện thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback(); // Rollback nếu có lỗi
+                            MessageBox.Show("Lỗi khi xuất viện: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn phiếu nhấp viện, Cảm ơn!");
+            }
+        }
+
     }
 }
