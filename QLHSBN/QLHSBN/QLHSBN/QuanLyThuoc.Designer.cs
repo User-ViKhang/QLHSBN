@@ -123,6 +123,7 @@ namespace QLHSBN
             this.dataGridViewDanhSachThuoc.Name = "dataGridViewDanhSachThuoc";
             this.dataGridViewDanhSachThuoc.Size = new System.Drawing.Size(510, 173);
             this.dataGridViewDanhSachThuoc.TabIndex = 0;
+            this.dataGridViewDanhSachThuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhSachThuoc_CellContentClick);
             this.dataGridViewDanhSachThuoc.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDanhSachThuoc_CellContentDoubleClick);
             this.dataGridViewDanhSachThuoc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewDanhSachThuoc_CellMouseClick);
             // 
