@@ -116,6 +116,12 @@
     <Compile Include="TaoPXN.Designer.cs">
       <DependentUpon>TaoPXN.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongKeBenhNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeBenhNhan.Designer.cs">
+      <DependentUpon>ThongKeBenhNhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="ToaThuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dichvu.resx">
       <DependentUpon>Dichvu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeBenhNhan.resx">
+      <DependentUpon>ThongKeBenhNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToaThuoc.resx">
       <DependentUpon>ToaThuoc.cs</DependentUpon>

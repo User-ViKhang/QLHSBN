@@ -16,7 +16,7 @@ namespace QLHSBN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Phieunhapvien());
+            Application.Run(new ThongKeBenhNhan());
         }
     }
 }

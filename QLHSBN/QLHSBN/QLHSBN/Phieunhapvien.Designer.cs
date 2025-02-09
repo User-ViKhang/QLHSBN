@@ -291,6 +291,7 @@ namespace QLHSBN
             this.dtp_2.Name = "dtp_2";
             this.dtp_2.Size = new System.Drawing.Size(121, 20);
             this.dtp_2.TabIndex = 3;
+            this.dtp_2.ValueChanged += new System.EventHandler(this.dtp_2_ValueChanged);
             // 
             // btnXuatVien
             // 
@@ -309,6 +310,7 @@ namespace QLHSBN
             this.dtp_1.Name = "dtp_1";
             this.dtp_1.Size = new System.Drawing.Size(121, 20);
             this.dtp_1.TabIndex = 3;
+            this.dtp_1.ValueChanged += new System.EventHandler(this.dtp_1_ValueChanged);
             // 
             // label9
             // 
