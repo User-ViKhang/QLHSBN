@@ -277,5 +277,9 @@ namespace QLHSBN
                 }
             }
         }
+
+        private void dgvDSPhieuThu_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+        }
     }
 }
