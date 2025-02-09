@@ -558,5 +558,14 @@ namespace QLHSBN
             }
         }
 
+        private void dtp_1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtp_2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
