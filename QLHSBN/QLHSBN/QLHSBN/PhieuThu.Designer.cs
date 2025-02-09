@@ -290,6 +290,7 @@ namespace QLHSBN
             this.dgvDSPhieuThu.Size = new System.Drawing.Size(588, 182);
             this.dgvDSPhieuThu.TabIndex = 0;
             this.dgvDSPhieuThu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSPhieuThu_CellClick);
+            this.dgvDSPhieuThu.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvDSPhieuThu_MouseDoubleClick);
             // 
             // label13
             // 

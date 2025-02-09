@@ -203,7 +203,6 @@ namespace QLHSBN
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            MessageBox.Show($"Lỗi khi đổi phòng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -213,6 +212,41 @@ namespace QLHSBN
                 MessageBox.Show($"Lỗi kết nối CSDL: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            // Cập nhật chức năng đổi phòng trong Phiếu nhập viện
+            var nhapvien_id = 0;
+            var phong_id = 0;
+
+            if (!int.TryParse(txt_stt.Text, out nhapvien_id))
+            {
+                MessageBox.Show("Giá trị nhập viện ID không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cbb_phongbenh.SelectedValue != null && int.TryParse(cbb_phongbenh.SelectedValue.ToString(), out phong_id))
+            {
+                using (SqlConnection conn = new SqlConnection(cm.connectionString))
+                {
+                    conn.Open();
+                    SqlTransaction transaction = conn.BeginTransaction();
+
+                        string sproChangeRoom = @"EXEC ChuyenPhongBenh @nhapvien_id, @phong_id";
+
+                        using (SqlCommand cmd = new SqlCommand(sproChangeRoom, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@nhapvien_id", nhapvien_id);
+                            cmd.Parameters.AddWithValue("@phong_id", phong_id);
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        MessageBox.Show("Chuyển phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Giá trị phòng ID không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_them_Click(object sender, EventArgs e)
